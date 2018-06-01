@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script>
+        var menimApp = angular.module("myApp", []);
+        // birinci kontrol basladi
+        menimApp.controller("myControl", function ($scope) {
+            $scope.myArr = ['Messi','Coutinho','Salah','Pique','Jordi Alba','Greizmann','Ter Stegen'];
+            $scope.remove = function(a){
+                $scope.myArr.splice(a,1);
+            }
+        });
+
+    </script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ng-hide ng-show ng if</title>
+</head>
+
+<body ng-app="myApp">
+    <!-- first CONTROL BEGIN -->
+    <div class="container mt-5" ng-controller="myControl">
+       <p class="text-center"><b>$INDEX</b> metodunu istifade etmekle arrayin index-ni tapiriq ve bu indeksdeki elementi silirik</p>
+       <div class="mt-5">
+           <ul class="list-group">
+               <li class="list-group-item ml-2" style="font-size:20px" ng-repeat="player in myArr">
+                   <button class="btn btn-info" ng-click="remove($index)">Remove</button>
+                   {{player}}
+               </li>
+           </ul>
+       </div>
+    </div>
+    <!-- first CONTROL END -->
+
+
+
+</body>
+
+</html>
