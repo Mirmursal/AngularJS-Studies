@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script>
+        var menimApp = angular.module("myApp", []);
+        // birinci kontrol basladi
+        menimApp.controller("myControl", function ($scope) {
+            $scope.value = 0;
+        });
+
+    </script>
+    <style>
+        .myClass {
+            color: white;
+            background: red;
+            width: 110px;
+            height: 120px;
+            margin: auto;
+            padding: 10px;
+            padding-top: 3.2%;
+            text-align: center;
+            font-size: 30px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ng-hide ng-show ng if</title>
+</head>
+
+<body ng-app="myApp">
+    <!-- first CONTROL BEGIN -->
+    <div class="container mt-5" ng-controller="myControl">
+        <p class="text-center btn-info"> ng-show / ng-hide is
+            <b>display:block and display:none</b>
+            <br> but ng-if is
+            <b>remove the element</b>
+        </p>
+        <h3 class="text-center">Value is {{value}}</h3>
+        <div class="text-center">
+            <button class="btn btn-success" ng-click="value=value+1">Increase The Value</button>
+            <button class="btn btn-warning" ng-click="value=value-1">Decrease The Value</button>
+            <button class="btn btn-success" ng-click="value=true">Show The Box</button>
+            <button class="btn btn-warning" ng-click="value=false">Hide The Box</button>
+        </div>
+        <div class="myClass mt-5" ng-if="value">BOX</div>
+    </div>
+    <!-- first CONTROL END -->
+
+
+
+</body>
+
+</html>
