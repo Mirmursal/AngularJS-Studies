@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script>
+        var menimApp = angular.module("myApp", []);
+        // birinci kontrol basladi
+        menimApp.controller("myControl", function ($scope, $http) {
+            $http.get("https://jsonplaceholder.typicode.com/posts").then(function (response) {
+                $scope.datalar = response.data;
+            });
+        });
+
+    </script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Template Literals</title>
+</head>
+
+<body ng-app="myApp">
+    <!-- first CONTROL BEGIN -->
+    <div ng-controller="myControl">
+        <label for="search">Axtar</label>
+        <input type="text" id="search" ng-model="axtar">
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="data in datalar | filter:axtar | orderBy : '-id'">{{data.body}}</li>
+        </ul>
+    </div>
+    <!-- first CONTROL END -->
+
+
+
+
+
+    <script src="app.js"></script>
+</body>
+</html>
