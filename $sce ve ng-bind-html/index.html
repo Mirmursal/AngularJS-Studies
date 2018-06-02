@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script>
+        var menimApp = angular.module("myApp", []);
+        // birinci kontrol basladi
+        menimApp.controller("myControl", function ($scope, $sce) {
+            $scope.value = "";
+            $scope.takeCode = function () {
+                $scope.value = $sce.trustAsHtml("<h1>Juan Román Riquelme , Barcelona(2002-2003)</h1>");
+                $scope.mySrc = "http://www.fantasista10.co.uk/wp-content/uploads/2017/07/Riquelme-barca1.jpg";
+            }
+        });
+
+    </script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>$sce ve ng-bind-html</title>
+</head>
+
+<body ng-app="myApp">
+    <!-- first CONTROL BEGIN -->
+    <div class="container mt-5" ng-controller="myControl">
+        <p class="text-center">
+            <b>$sce $ng-bind-html</b>
+        </p>
+        <div class="mt-5">
+            <button class="btn btn-info" ng-click="takeCode()">Kodu Al</button>
+            <div class="mt-2 text-center" ng-bind-html="value"></div>
+            <div class="text-center">
+                <img class="mt-3 mb-3" ng-src="{{mySrc}}" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- first CONTROL END -->
+
+
+
+</body>
+
+</html>
