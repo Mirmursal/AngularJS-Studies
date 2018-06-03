@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <script>
+        var menimApp = angular.module("myApp", []);
+
+        // birinci kontrol basladi
+        menimApp.controller("myControl", function ($scope) {
+            $scope.limit = 0;
+
+            $scope.LimitDept = [];
+
+            $scope.companies = [{ "Name": "Gilan Holding", "Dept": "200000" },
+            { "Name": "Gilan Holding", "Dept": "200000" },
+            { "Name": "Garabagh FC", "Dept": "25000" },
+            { "Name": "Gabala Conserve", "Dept": "140000" },
+            { "Name": "Bentley Baku", "Dept": "720000" },
+            { "Name": "Cleaning Forces", "Dept": "2479" }]
+
+            $scope.GetFilter = function () {
+                $scope.LimitDept = $scope.companies.filter(function (a) {
+                    return a.Dept > $scope.limit;
+                })
+            }
+        });
+
+    </script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>filter() method</title>
+</head>
+
+<body ng-app="myApp">
+    <!-- first CONTROL BEGIN -->
+    <div class="container mt-5" ng-controller="myControl">
+        <p class="text-center">
+            <b>Filter()</b> method help us to filter for diffreent conditions</p>
+        <button class="btn btn-dark" ng-click="GetFilter()"> Filter The Companies</button>
+        <div class="mt-2">
+            <label for="limit">Enter Defined Limit</label>
+            <input type="number" class="form-control" ng-model="limit" id="limit" placeholder="Borcu daxil etdiyiniz reqemden boyuk olan sirketler secilecek">
+        </div>
+
+        <div class="text-center">
+            <ul class="list-group mb-5 mt-2">
+                <li class="list-group-item active mb-1" ng-repeat="limit in LimitDept">Name : {{limit.Name}}
+                    <br> Dept : {{limit.Dept}}</li>
+            </ul>
+        </div>
+
+        <div class="text-center">
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="comp in companies">Name : {{comp.Name}}
+                    <br> Dept : {{comp.Dept}}</li>
+            </ul>
+        </div>
+
+    </div>
+    <!-- first CONTROL END -->
+
+
+
+</body>
+
+</html>
