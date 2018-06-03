@@ -5,12 +5,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
     <script>
         var menimApp = angular.module("myApp", []);
+
         // birinci kontrol basladi
         menimApp.controller("myControl", function ($scope) {
-            $scope.myArr = ['Messi', 'Coutinho', 'Salah', 'Pique', 'Jordi Alba', 'Greizmann', 'Ter Stegen'];
-            $scope.remove = function (a) {
-                $scope.myArr.splice(a, 1);
-            }
+            $scope.alert = "";
+            $scope.value = 0;
+            $scope.$watch("value", function () {
+                if ($scope.value > 10) {
+                    $scope.alert = "It is a lot return back";
+                    $scope.value = 10;
+                }
+            })
         });
 
     </script>
@@ -19,22 +24,16 @@
         crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ng-hide ng-show ng if</title>
+    <title>$Watch Method</title>
 </head>
 
 <body ng-app="myApp">
     <!-- first CONTROL BEGIN -->
     <div class="container mt-5" ng-controller="myControl">
         <p class="text-center">
-            <b>$INDEX</b> metodunu istifade etmekle arrayin index-ni tapiriq ve bu indeksdeki elementi silirik</p>
-        <div class="mt-5">
-            <ul class="list-group">
-                <li class="list-group-item ml-2" style="font-size:20px" ng-repeat="player in myArr">
-                    <button class="btn btn-info" ng-click="remove($index)">Remove</button>
-                    {{player}}
-                </li>
-            </ul>
-        </div>
+            <b>$Watch</b> method help us to follow element' value and e.t.c componenets</p>
+        <button class="btn btn-info" ng-click="value = value + 1">Increase The Value</button> {{value}}
+        <br> {{alert}}
     </div>
     <!-- first CONTROL END -->
 
